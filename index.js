@@ -10,7 +10,8 @@ const nodemailer = require('nodemailer');
 const app = express();
 app.use(express.json());
 app.use(cors({
-    origin:["http://127.0.0.1:5173"],
+    // origin:["http://127.0.0.1:5173"],
+    origin:["https://incredible-clafoutis-cbfcb8.netlify.app"],
     methods: ['GET','POST'],
     credentials: true
 }))
@@ -102,9 +103,10 @@ app.post('/forgot-password', (req, res)=>{
     
     var mailOptions = {
       from: 'shalinisai9195@gmail.com',
-      to: 'balachanderp786@gmail.com',
+      to: 'shalinisai9195@gmail.com',
       subject: 'Reset password Link',
-      text: `http://127.0.0.1:5173/reset_password/${user._id}/${token}`
+      // text: `http://127.0.0.1:5173/reset_password/${user._id}/${token}`
+      text: `https://incredible-clafoutis-cbfcb8.netlify.app/reset_password/${user._id}/${token}`
     };
     
     transporter.sendMail(mailOptions, function(error, info){
