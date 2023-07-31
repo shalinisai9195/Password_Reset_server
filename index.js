@@ -10,8 +10,8 @@ const nodemailer = require('nodemailer');
 const app = express();
 app.use(express.json());
 app.use(cors({
-    // origin:["http://127.0.0.1:5173"],
-    origin:["https://incredible-clafoutis-cbfcb8.netlify.app"],
+   //  origin:["http://127.0.0.1:5173"],
+    origin:[`https://incredible-clafoutis-cbfcb8.netlify.app`],
     methods: ['GET','POST'],
     credentials: true
 }))
@@ -97,7 +97,7 @@ app.post('/forgot-password', (req, res)=>{
       service: 'gmail',
       auth: {
         user: 'shalinisai9195@gmail.com',
-        pass: 'bboavoasnxwznzxi'
+        pass: 'xuzvnhhuatsqasti'
       }
     });
     
@@ -112,6 +112,7 @@ app.post('/forgot-password', (req, res)=>{
     transporter.sendMail(mailOptions, function(error, info){
       if (error) {
         console.log(error);
+        res.send({Status:"Unsuccessfull", ...error})
       } else {
 
         return res.send({Status: "Success"})
